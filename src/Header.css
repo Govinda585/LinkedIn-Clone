@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  border-bottom: 0.1px solid gainsboro;
+  padding-bottom: 10px;
+  background-color: white;
+}
+.header_left {
+  display: flex;
+}
+.header_left > img {
+  object-fit: contain;
+  height: 40px;
+  margin-right: 10px;
+}
+.header_search {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  color: gray;
+  background-color: #eef3f8;
+  border-radius: 5px;
+}
+.header_search > input {
+  outline: none;
+  border: none;
+  background: none;
+}
