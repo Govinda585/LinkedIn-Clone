@@ -1,0 +1,32 @@
+.login > form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.login {
+  display: grid;
+  margin: auto 0px;
+  place-items: center;
+}
+.login > form > button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(6, 160, 6);
+  font-size: large;
+  width: 365px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.login > form > input {
+  width: 350px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.login > form > p > span {
+  color: rgb(6, 111, 160);
+  cursor: pointer;
+}

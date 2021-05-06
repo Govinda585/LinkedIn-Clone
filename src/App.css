@@ -3,4 +3,6 @@
 }
 .app_body {
   display: flex;
+  margin-top: 35px;
+  justify-content: space-evenly;
 }

@@ -9,32 +9,36 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import Post from "./Post";
 import { db } from "./firebase";
 import firebase from "firebase";
+import { connect } from "react-redux";
 
-function Feed() {
-  const [input, setInput] = useState("");
+function Feed({ user }) {
   const [posts, setPosts] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      )
-    );
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
   }, []);
 
   const sendPost = (e) => {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Govinda bist",
-      description: "this is for test",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl: user.photoURL || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
+    setInput("");
   };
 
   return (
@@ -65,7 +69,7 @@ function Feed() {
         </div>
       </div>
 
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+      {posts.map(({ id, data: { name, message, description, photoUrl } }) => (
         <Post
           key={id}
           name={name}
@@ -78,4 +82,10 @@ function Feed() {
   );
 }
 
-export default Feed;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Feed);

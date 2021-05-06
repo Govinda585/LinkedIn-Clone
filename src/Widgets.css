@@ -1,0 +1,25 @@
+.widgets_news {
+  display: flex;
+  margin-top: 10px;
+}
+.widgets {
+  background-color: white;
+  border-radius: 10px;
+  height: fit-content;
+  padding: 10px;
+  width: 200px;
+}
+.widgets_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.widgets_news:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.widgets_articleLeft {
+  color: rgb(10, 149, 184);
+}

@@ -2,8 +2,9 @@ import { Avatar } from "@material-ui/core";
 import React from "react";
 import "./SideBar.css";
 import nature from "./img/nature.jpeg";
+import { connect } from "react-redux";
 
-function SideBar() {
+function SideBar({ user }) {
   const recentItem = (topic) => (
     <div className="recentItem">
       <span className="sidebar_hashtag">#</span>
@@ -15,9 +16,9 @@ function SideBar() {
     <div className="sidebar">
       <div className="sidebar_top">
         <img className="sidebar_img" src={nature} alt="" />
-        <Avatar />
-        <h2>Govinda Bist</h2>
-        <h4>govindabist11@gmail.com</h4>
+        <Avatar src={user.photoURL}>{user.email[0]}</Avatar>
+        <h2>{user.displayName}</h2>
+        <h4>{user.email}</h4>
       </div>
       <div className="sidebar_status">
         <span className="sidebar_stat">
@@ -40,4 +41,10 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+const mapStateToTheProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToTheProps)(SideBar);

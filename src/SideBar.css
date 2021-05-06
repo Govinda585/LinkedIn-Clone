@@ -51,6 +51,8 @@
   justify-content: space-between;
 }
 .sidebar_footer {
+  position: sticky;
+  top: 80px;
   border: 1px solid lightgray;
   background-color: white;
   border-radius: 10px;
